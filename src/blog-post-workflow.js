@@ -327,17 +327,13 @@ Promise.allSettled(promiseArray).then((results) => {
           });
         }
       } else {
-        // Calculating last commit date, please see https://git.io/Jtm4V
-        if (!process.env.TEST_MODE && ENABLE_KEEPALIVE) {
-          // Do dummy commit if elapsed time is greater than 50 days
+
           const committerUsername = core.getInput('committer_username');
           const committerEmail = core.getInput('committer_email');
           const message = await keepaliveWorkflow.KeepAliveWorkflow(GITHUB_TOKEN, committerUsername, committerEmail,
-            'dummy commit to keep the repository active, see https://git.io/Jtm4V', 50);
+            'Automated: update gitlab activity', 1);
           core.info(message);
-        } else {
-          core.info('No change detected, skipping');
-        }
+
         process.exit(jobFailFlag ? 1 : 0);
       }
     } catch (e) {
