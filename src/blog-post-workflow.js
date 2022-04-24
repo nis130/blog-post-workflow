@@ -326,7 +326,7 @@ Promise.allSettled(promiseArray).then((results) => {
             process.exit(jobFailFlag ? 1 : 0);
           });
         }
-      } else {
+      } else if (ENABLE_KEEPALIVE) {
 
           const committerUsername = core.getInput('committer_username');
           const committerEmail = core.getInput('committer_email');
