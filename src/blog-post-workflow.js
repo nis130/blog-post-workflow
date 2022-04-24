@@ -331,7 +331,7 @@ Promise.allSettled(promiseArray).then((results) => {
           const committerUsername = core.getInput('committer_username');
           const committerEmail = core.getInput('committer_email');
           const message = await keepaliveWorkflow.KeepAliveWorkflow(GITHUB_TOKEN, committerUsername, committerEmail,
-            'Automated: update gitlab activity', 1);
+            'Automated: update gitlab activity', 0);
           core.info(message);
 
         process.exit(jobFailFlag ? 1 : 0);
